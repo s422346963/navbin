@@ -43,15 +43,14 @@ const getNavs = (): INavProps[] => {
 
     try {
       const serverdb = fs.readFileSync(PATHS.serverdb).toString().trim()
+      console.log(serverdb)
       return JSON.parse(serverdb)
     } catch {}
 
-    return strings[0] === '['
-      ? JSON.parse(strings)
-      : JSON.parse(LZString.decompressFromBase64(strings)) ||
-          JSON.parse(LZString.decompressFromBase64(defaultDb))
-  } catch {
-    return JSON.parse(LZString.decompressFromBase64(defaultDb))
+    return strings[0] === '[' ? JSON.parse(strings) : JSON.parse(defaultDb)
+  } catch (e: any) {
+    console.log('数据库解析失败' + e)
+    return JSON.parse(defaultDb)
   }
 }
 
@@ -96,6 +95,13 @@ const main = async () => {
           placeholder: '站内搜索',
           blocked: false,
           isInner: true,
+        },
+        {
+          name: 'Baidu',
+          url: 'https://www.baidu.com/s?wd=',
+          icon: 'https://www.baidu.com/favicon.ico',
+          blocked: false,
+          isInner: false,
         },
         {
           name: 'Google',
@@ -369,14 +375,14 @@ const main = async () => {
     settings.runtime ??= dayjs.tz().valueOf()
     settings.userActions ||= []
     settings.email ||= configJson.email || ''
-    settings.showGithub ??= true
+    settings.showGithub ??= false
     settings.showLanguage ??= true
     settings.showRate ??= true
     settings.openSearch ??= true
     settings.title ??= '发现导航 - 精选实用导航网站'
     settings.description ??= '发现导航是一个轻量级免费且强大的导航网站'
     settings.keywords ??= '免费导航,开源导航'
-    settings.theme ??= 'Light'
+    settings.theme ??= 'Side'
     settings.actionUrl ??= ''
     settings.appTheme ??= 'Current'
     settings.openSEO ??= !configJson.address
@@ -384,11 +390,10 @@ const main = async () => {
     settings.headerContent ??= ''
     settings.footerContent ??= `
 <div class="dark-white">
-  <div>共收录$\{total}个网站</div>
   <div>Copyright © 2018-$\{year} $\{hostname}, All Rights Reserved</div>  
 </div>
 `.trim()
-    settings.showThemeToggle ??= true
+    settings.showThemeToggle ??= false
     settings.logo ||= ''
     settings.darkLogo ||= ''
 
@@ -399,11 +404,11 @@ const main = async () => {
     settings.simThemeImages ||= [
       {
         src: banner1,
-        url: 'https://github.com/xjh22222228/nav',
+        url: 'https://github.com/s422346963/navbin',
       },
       {
         src: banner2,
-        url: 'https://github.com/xjh22222228/nav',
+        url: 'https://github.com/s422346963/navbin',
       },
     ]
     settings.simThemeDesc ??=
@@ -449,11 +454,11 @@ const main = async () => {
     settings.sideThemeImages ||= [
       {
         src: banner2,
-        url: 'https://github.com/xjh22222228/nav',
+        url: 'https://github.com/s422346963/navbin',
       },
       {
         src: banner1,
-        url: 'https://github.com/xjh22222228/nav',
+        url: 'https://github.com/s422346963/navbin',
       },
     ]
     settings.shortcutTitle ??= ''

@@ -193,7 +193,8 @@ export async function updateFileContent({
   }
 
   if (path === DB_PATH) {
-    content = LZString.compressToBase64(content)
+    console.log(content)
+    // 不再需要base64加密
   }
   const commitMessage = `rebot(CI): ${message}`
   const params: Record<string, any> = {
