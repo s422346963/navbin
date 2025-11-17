@@ -93,6 +93,10 @@ export const routes: Routes = [
         loadComponent: () => import('src/view/system/config/index.component'),
       },
       {
+        path: 'pic',
+        loadComponent: () => import('src/view/system/pic/index.component'),
+      },
+      {
         path: '**',
         redirectTo: '/system/web',
       },

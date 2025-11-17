@@ -93,6 +93,13 @@
         >
           {{ $t('_webInfo') }}
         </li>
+        <li
+          nz-menu-item
+          [nzSelected]="currentMenu === 'pic'"
+          (click)="goRoute('/system/pic')"
+        >
+          图片上传
+        </li>
       </ul>
     </nz-sider>
     <nz-layout class="inner-layout" [class.!ml-0]="isCollapsed">

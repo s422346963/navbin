@@ -1,0 +1,242 @@
+.pic-upload-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  h2 {
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #666;
+    margin: 0;
+  }
+}
+
+.upload-area {
+  border: 2px dashed #d9d9d9;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.3s;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+  
+  &.drag-over {
+    border-color: #1890ff;
+    background-color: rgba(24, 144, 255, 0.05);
+  }
+}
+
+.upload-content {
+  .upload-icon {
+    font-size: 48px;
+    color: #d9d9d9;
+    margin-bottom: 16px;
+  }
+  
+  .upload-text {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .upload-hint {
+    color: #999;
+    font-size: 12px;
+    margin-top: 12px;
+  }
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  min-height: 200px;
+  
+  .preview-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      transform: translateY(-4px);
+    }
+    
+    &.add-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      background-color: #fafafa;
+      cursor: pointer;
+      border: 2px dashed #d9d9d9;
+      
+      .add-more-content {
+        text-align: center;
+        
+        nz-icon {
+          font-size: 28px;
+          color: #d9d9d9;
+          margin-bottom: 8px;
+          transition: all 0.3s;
+        }
+        
+        p {
+          margin: 0;
+          color: #999;
+          font-size: 14px;
+        }
+      }
+      
+      &:hover {
+        border-color: #1890ff;
+        background-color: rgba(24, 144, 255, 0.03);
+        
+        nz-icon {
+          color: #1890ff;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  
+  .image-wrapper {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    
+    img {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      
+      button {
+        color: white;
+        border-color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+    
+    &:hover {
+      img {
+        transform: scale(1.08);
+      }
+      
+      .image-overlay {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .image-info {
+    padding: 16px 20px;
+    background-color: white;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    
+    .image-name {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .image-size {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+    }
+  }
+}
+
+.upload-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.upload-result {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  border-radius: 8px;
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #52c41a;
+  }
+  
+  .result-list {
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .result-info {
+        flex: 1;
+        
+        .result-name {
+          margin: 0 0 4px;
+          font-weight: 500;
+        }
+        
+        .result-url {
+          margin: 0;
+          font-size: 12px;
+          color: #666;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}

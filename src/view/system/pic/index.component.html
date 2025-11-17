@@ -1,0 +1,94 @@
+<div class="pic-upload-container">
+  <div class="upload-header">
+    <h2>图片上传</h2>
+    <p>支持拖拽上传或点击选择图片文件</p>
+  </div>
+
+  <!-- 图片预览区域 - 选择图片后显示 -->
+  <div class="preview-container" *ngIf="previewImage">
+    <div class="preview-single">
+      <div class="image-wrapper">
+        <img [src]="previewImage.url" [alt]="previewImage.name" />
+        <div class="image-overlay">
+          <button
+            nz-button
+            nzType="default"
+            nzShape="circle"
+            (click)="removeImage()"
+          >
+            <nz-icon nzType="delete"></nz-icon>
+          </button>
+        </div>
+      </div>
+      <div class="image-info">
+        <p class="image-name" [title]="previewImage.name">
+          {{ previewImage.name }}
+        </p>
+        <p class="image-size">{{ formatFileSize(previewImage.size) }}</p>
+      </div>
+    </div>
+
+    <div class="upload-actions">
+      <button nz-button nzType="primary" (click)="resetUpload()">清空</button>
+      <button
+        nz-button
+        nzType="primary"
+        [nzLoading]="isUploading"
+        [disabled]="!previewImage"
+        (click)="uploadImage()"
+      >
+        上传
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="upload-area"
+    [class.drag-over]="isDragOver"
+    (drop)="handleDrop($event)"
+    (dragover)="handleDragOver($event)"
+    (dragleave)="handleDragLeave($event)"
+  >
+    <div class="upload-content" *ngIf="!previewImage">
+      <div class="upload-icon">
+        <nz-icon nzType="cloud-upload" nzTheme="outline"></nz-icon>
+      </div>
+      <p class="upload-text">拖拽图片到此处或</p>
+      <button nz-button nzType="primary" (click)="selectFile()">
+        选择图片
+      </button>
+      <input
+        #fileInput
+        type="file"
+        accept="image/*"
+        (change)="handleFileSelect($event)"
+        style="display: none"
+      />
+      <p class="upload-hint">支持 JPG、PNG、GIF 格式，文件不超过 10MB</p>
+    </div>
+  </div>
+
+  <div class="upload-result" *ngIf="uploadedImage">
+    <h3>上传成功</h3>
+    <div class="result-item">
+      <div class="result-info">
+        <a class="result-url" href="{{ uploadedImage.url }}" target="_blank">{{ uploadedImage.url }}</a>
+      </div>
+      <div class="result-actions">
+        <button nz-button nzType="default" (click)="copyUrl(uploadedImage.url)">
+          复制链接
+        </button>
+        <button nz-button nzType="default" (click)="resetUpload()">
+          重新上传
+        </button>
+        <div>
+          <img
+            class="result-url"
+            [src]="uploadedImage.url"
+            [alt]="uploadedImage.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
