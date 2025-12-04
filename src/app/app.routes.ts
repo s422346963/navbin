@@ -43,6 +43,10 @@ export const routes: Routes = [
     data: {},
   },
   {
+    path: 'gitalk',
+    loadComponent: () => import('src/view/gitalk/index.component').then(m => m.default),
+  },
+  {
     path: 'system',
     loadComponent: () => import('src/view/system/index.component'),
     children: [

@@ -242,4 +242,11 @@ export class FixbarComponent {
     localStorage.setItem(STORAGE_KEY_MAP.LANGUAGE, l)
     location.reload()
   }
+
+  /**
+   * 跳转到Gitalk评论页面
+   */
+  goToGitalkPage(): void {
+    this.router.navigate(['/gitalk']);
+  }
 }

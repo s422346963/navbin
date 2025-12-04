@@ -1,0 +1,33 @@
+.gitalk-container {
+  width: 100%;
+  min-height: 400px;
+  
+  // Gitalk评论组件样式调整
+  :host ::ng-deep {
+    .gt-container {
+      .gt-header {
+        margin-bottom: 16px;
+      }
+      
+      .gt-comments {
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      
+      .gt-comment-admin {
+        .gt-avatar {
+          border-radius: 50%;
+        }
+      }
+      
+      .gt-btn {
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
