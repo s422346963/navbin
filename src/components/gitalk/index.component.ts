@@ -74,7 +74,6 @@ export class GitalkComponent implements OnInit {
       id: window.location.pathname, // 使用当前页面路径作为唯一标识
       distractionFreeMode: false,
       language: 'zh-CN',
-      pagerDirection: 'first',
       createIssueManually: false
     });
 
