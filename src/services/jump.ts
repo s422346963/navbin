@@ -16,7 +16,7 @@ export class JumpService {
   goUrl(e: any, url: string | null | undefined) {
     e?.stopPropagation?.()
     e?.preventDefault?.()
-
+    console.log(url)
     if (typeof url !== 'string' || !url) {
       return
     }
