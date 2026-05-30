@@ -101,7 +101,7 @@ export default class SystemSettingComponent {
     id: -1,
     name: '发现导航',
     desc: '发现导航是一个轻量级免费且强大的导航网站',
-    url: 'https://nav3.cn',
+    url: 'https://api-qiangbin.vercel.app',
     icon: replaceJsdelivrCDN(
       'https://gcore.jsdelivr.net/gh/xjh22222228/nav-image@image/logo.svg',
       settings(),
