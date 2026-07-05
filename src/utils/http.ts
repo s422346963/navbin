@@ -93,8 +93,8 @@ httpInstance.interceptors.response.use(
     return Promise.reject(error)
   },
 )
-
-export const HTTP_BASE_URL = 'https://api.nav3.cn'
+//     url: 'https://api-qiangbin.vercel.app',
+export const HTTP_BASE_URL = 'https://api-qiangbin.vercel.app'
 
 const httpNavInstance = axios.create({
   timeout: 15000,

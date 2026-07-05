@@ -339,7 +339,7 @@ export async function getWebInfo(url: string) {
         ...res.data,
       }
     }
-    const res = await httpNav.post('/api/icon', { url })
+    const res = await httpNav.post('/api/url/icon', { url })
     return {
       ...res.data,
     }
